@@ -1,0 +1,9 @@
+.venv/
+build/
+*.keystore
+shots/
+.playwright-mcp/
+__pycache__/
+tools/tv.env
+# The TV's state dumps from before the changes: device IDs and network details, kept locally.
+backup/

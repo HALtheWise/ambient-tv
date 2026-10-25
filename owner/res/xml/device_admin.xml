@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device-admin>
+    <uses-policies>
+        <!-- lockNow(): on a TV with no keyguard this turns the screen off (standby). -->
+        <force-lock />
+    </uses-policies>
+</device-admin>

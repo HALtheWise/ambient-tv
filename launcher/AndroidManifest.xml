@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="bot.tvhome"
+    android:versionCode="1"
+    android:versionName="1">
+
+    <uses-sdk android:minSdkVersion="31" android:targetSdkVersion="34" />
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <!-- Wi-Fi name in the top bar. Fine location is granted over adb (install.sh). -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Screen-off timer, carried out by the device-owner app (same signing key). -->
+    <uses-permission android:name="bot.tvowner.permission.CONTROL" />
+
+    <!-- Without this, package visibility on Android 11+ hides every app and the grid is empty. -->
+    <queries>
+        <!-- Kept bound so Android's freezer never freezes the Cast receiver (see Home.castKeepAlive). -->
+        <package android:name="com.google.android.apps.mediashell" />
+        <package android:name="bot.tvowner" />
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:label="@string/app_name"
+        android:theme="@style/Home"
+        android:allowBackup="false"
+        android:largeHeap="true">
+
+        <activity android:name=".Home"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:clearTaskOnLaunch="true"
+            android:excludeFromRecents="true"
+            android:resumeWhilePausing="true"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|fontScale">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <provider android:name=".Prefs"
+            android:authorities="bot.tvhome.prefs"
+            android:exported="true"
+            android:readPermission="bot.tvowner.permission.CONTROL" />
+
+        <receiver android:name=".Config"
+            android:exported="true"
+            android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="bot.tvhome.CONFIG" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

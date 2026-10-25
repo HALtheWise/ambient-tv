@@ -1,0 +1,27 @@
+com.tcl.esticker  # batch1 TCL content/shop/streaming
+com.tcl.exhibit  # batch1 TCL content/shop/streaming
+com.tcl.ocean.instructions  # batch1 TCL content/shop/streaming
+com.tcl.hotelmenu  # batch1 TCL content/shop/streaming
+com.tcl.tv.plus  # batch1 TCL content/shop/streaming
+com.tcl.tv.tclhome_passive  # batch1 TCL content/shop/streaming
+com.tcl.browser  # batch1 TCL content/shop/streaming
+com.tcl.repairguide  # batch1 TCL content/shop/streaming
+com.amazon.amazonvideo.livingroom  # batch1 TCL content/shop/streaming
+com.netflix.ninja  # batch1 TCL content/shop/streaming
+com.tcl.logkit  # batch2 TCL background/installers/partner
+com.tcl.smartlink.core  # batch2 TCL background/installers/partner
+com.tcl.partnercustomizer  # batch2 TCL background/installers/partner
+android.autoinstalls.config.google.gtvpai  # batch2 TCL background/installers/partner
+com.google.android.partnersetup  # batch2 TCL background/installers/partner
+com.google.android.feedback  # batch2 TCL background/installers/partner
+com.android.tv.feedbackconsent  # batch2 TCL background/installers/partner
+com.tcl.t_solo  # batch2 TCL background/installers/partner
+com.tcl.ui_mediaCenter  # batch2 TCL background/installers/partner
+com.tcl.channelplus  # batch2 TCL background/installers/partner
+com.tcl.interactive  # batch2 TCL background/installers/partner
+com.android.adservices.api  # batch3 Android 14 ad/personalization modules
+com.android.ondevicepersonalization.services  # batch3 Android 14 ad/personalization modules
+com.android.federatedcompute.services  # batch3 Android 14 ad/personalization modules
+com.tcl.ttvs  # batch4 TCL telemetry+updater+Alexa (ttvs)
+com.google.android.apps.tv.launcherx  # batch5 stock Home (launcherx has HOME priority 2, setupwraith 1; bot.tvhome capped at 0)
+com.google.android.tungsten.setupwraith  # batch5 stock Home (launcherx has HOME priority 2, setupwraith 1; bot.tvhome capped at 0)

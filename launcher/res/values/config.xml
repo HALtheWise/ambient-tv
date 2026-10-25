@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Order of the shelf's Apps row, by package name; everything else follows by name. -->
+    <string-array name="dock_apps">
+        <item>com.google.android.youtube.tv</item>
+        <item>com.tcl.tv</item>
+        <item>com.android.tv.settings</item>
+        <item>com.android.vending</item>
+    </string-array>
+
+    <!-- Apps never shown on the shelf. -->
+    <string-array name="hidden_apps">
+        <item>bot.tvhome</item>
+        <item>com.tcl.suspension</item>
+    </string-array>
+</resources>

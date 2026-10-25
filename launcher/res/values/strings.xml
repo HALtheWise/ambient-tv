@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Home</string>
+    <string name="inputs">Inputs</string>
+    <string name="settings">Settings</string>
+    <string name="live_tv">Live TV</string>
+    <string name="offline">Offline</string>
+    <string name="ethernet">Ethernet</string>
+    <string name="wifi">Wi-Fi</string>
+    <string name="always_on">Always on</string>
+    <string name="cast">Google Cast</string>
+    <string name="airplay">AirPlay</string>
+    <string name="join_network">Join this network</string>
+    <string name="point_camera">Point a phone camera at the code</string>
+    <string name="qr_no_password">No Wi-Fi password set.\nSee README: wifi-password.</string>
+    <string name="ambient">Ambient</string>
+    <string name="apps">Apps</string>
+    <string name="life">Life</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="fireplace">Fireplace</string>
+    <string name="fractals">Fractals</string>
+    <string name="reaction_diffusion">Reaction–diffusion</string>
+    <string name="ants">Langton\'s ant</string>
+</resources>
