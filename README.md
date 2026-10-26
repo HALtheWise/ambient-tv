@@ -31,7 +31,7 @@ What is on the TV now:
   (build-tools 34's d8 crashes on JDK 21 class files.)
 - The TV's address in `tools/tv.env` (copy `tools/tv.env.example`), or `TV_HOST` / `TV_PORT` /
   `TV_MAC` in the environment.
-- The signing key, `build/debug.keystore`, to install anything (see below).
+- A signing key, `build/debug.keystore`: your own for your own TV, or ours for ours (see below).
 
 ## Tools
 
@@ -199,13 +199,30 @@ default, and Cast came up after a reboot.
   receiver, Netflix untested): `restore/restore.sh com.netflix.ninja`.
 - The Input bar still shows tiles for disabled TCL apps (TCL tv+, User Guide); they do nothing.
 
+## On your own TV
+
+The packages and quirks above are this TCL's; check yours before copying the debloat list.
+Turn on debugging and connect as in steps 2 to 4 below, then:
+
+```sh
+NEW_KEY=1 tools/build-apk.sh owner tvowner     # makes build/debug.keystore, yours from now on
+.venv/bin/python tools/tv.py --push build/tvowner.apk /data/local/tmp/tvowner.apk
+.venv/bin/python tools/tv.py 'pm install -t /data/local/tmp/tvowner.apk'
+.venv/bin/python tools/tv.py 'dpm set-device-owner bot.tvowner/.Admin'   # needs zero accounts on the TV
+tools/install-launcher.sh
+```
+
+Then disable whatever outranks it for Home (see *How Home was taken over*) with
+`tools/disable.sh`. Keep `build/debug.keystore` safe: every later update must be signed with it.
+
 ## Changing the setup
 
-For anyone in the house who wants to change something.
+For anyone in the house who wants to change ours.
 
-1. **Get the signing key.** It is `ambient-tv/debug.keystore` in the house's shared Drive folder
-   (ask for access); put it in `build/`. It is not in git. Both apps must be signed with it: Android refuses an update signed with
-   any other key, and `tools/build-apk.sh` stops rather than make a new one.
+1. **Get the signing key.** Ours is `ambient-tv/debug.keystore` in the house's shared Drive
+   folder (ask for access); put it in `build/`. It is not in git. Both apps on our TV are signed
+   with it: Android refuses an update signed with any other key, and `tools/build-apk.sh` stops
+   rather than make a new one.
 2. **Find the TV.** Copy `tools/tv.env.example` to `tools/tv.env` and fill in the IP address
    (Settings, Network & Internet on the TV).
 3. **Turn on debugging.** On the TV: Settings, Device Preferences, About, press OK on Build

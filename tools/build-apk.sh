@@ -24,13 +24,13 @@ javac -source 11 -target 11 -Xlint:-options -classpath "$JAR" -d "$OUT/classes" 
 "$BT/zipalign" -f 4 "$OUT/unsigned.apk" "$OUT/aligned.apk"
 
 # Both apps must carry the key already on the TV: Android refuses an update signed with another,
-# and bot.tvowner cannot be reinstalled without losing device ownership. The key is not in git;
-# get build/debug.keystore from whoever set the TV up. NEW_KEY=1 makes one, for a fresh TV only.
+# and bot.tvowner cannot be reinstalled without losing device ownership. The key is not in git.
+# For a TV that has never had these apps, NEW_KEY=1 makes one; otherwise use the one it has.
 KS=build/debug.keystore
 if [ ! -f "$KS" ]; then
     if [ "${NEW_KEY:-}" != 1 ]; then
-        echo "No $KS. Copy the TV's key there (see README, Changing the setup)." >&2
-        echo "For a TV that has never had these apps: NEW_KEY=1 $0 $*" >&2
+        echo "No $KS. For a TV that has never had these apps, make one: NEW_KEY=1 $0 $*" >&2
+        echo "For a TV that has them, copy the key they were signed with there (README)." >&2
         exit 1
     fi
     keytool -genkeypair -keystore "$KS" -storepass android -keypass android -alias debug \
