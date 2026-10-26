@@ -18,6 +18,11 @@ What is on the TV now:
   fractals, reaction-diffusion, Langton's ants) behind a clock, Cast, AirPlay and Wi-Fi status and
   a screen-off timer, with a shelf to switch scenes and reach the few apps that matter.
 
+| | |
+|---|---|
+| ![Game of Life: Bill Gosper's breeder, behind the clock](docs/life.jpg) | ![Reaction-diffusion, Coral](docs/reaction-diffusion.jpg) |
+| ![Fractals: Elephant Valley](docs/fractal.jpg) | ![The shelf: backgrounds and apps](docs/shelf.jpg) |
+
 ## Requirements
 
 - `.venv` with `adb-shell` (`python3 -m venv .venv && .venv/bin/pip install adb-shell`).
@@ -198,8 +203,8 @@ default, and Cast came up after a reboot.
 
 For anyone in the house who wants to change something.
 
-1. **Get the signing key.** Ask whoever set the TV up for `debug.keystore` and put it in `build/`.
-   It is not in git. Both apps must be signed with it: Android refuses an update signed with
+1. **Get the signing key.** It is `ambient-tv/debug.keystore` in the house's shared Drive folder
+   (ask for access); put it in `build/`. It is not in git. Both apps must be signed with it: Android refuses an update signed with
    any other key, and `tools/build-apk.sh` stops rather than make a new one.
 2. **Find the TV.** Copy `tools/tv.env.example` to `tools/tv.env` and fill in the IP address
    (Settings, Network & Internet on the TV).
