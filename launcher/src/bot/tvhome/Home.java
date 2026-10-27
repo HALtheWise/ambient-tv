@@ -899,6 +899,12 @@ public class Home extends Activity {
     public boolean dispatchKeyEvent(KeyEvent e) {
         lastInput = SystemClock.uptimeMillis();
         int k = e.getKeyCode();
+        // The remote's Settings button sends KEYCODE_NOTIFICATION, which the stock launcher used to
+        // answer; with it disabled the key reaches whatever window has focus, so Home answers it.
+        if (k == KeyEvent.KEYCODE_NOTIFICATION) {
+            if (e.getAction() == KeyEvent.ACTION_UP) launch(new Intent(Settings.ACTION_SETTINGS));
+            return true;
+        }
         boolean nav = k == KeyEvent.KEYCODE_DPAD_UP || k == KeyEvent.KEYCODE_DPAD_DOWN
                 || k == KeyEvent.KEYCODE_DPAD_LEFT || k == KeyEvent.KEYCODE_DPAD_RIGHT
                 || k == KeyEvent.KEYCODE_DPAD_CENTER || k == KeyEvent.KEYCODE_ENTER

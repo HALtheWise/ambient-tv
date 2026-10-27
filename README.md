@@ -90,7 +90,7 @@ An ambient display, not an app launcher (`launcher/`, package `bot.tvhome`):
   - **Screen-off timer**: counts down 5 minutes from the last key press, then puts the TV to
     sleep through the device owner (`lockNow`). Select it to switch to *Always on*
     (remembered).
-  - **Settings** (gear), since the remote's Settings button no longer works.
+  - **Settings** (gear), like the remote's Settings button.
 - **Down opens the shelf**: an *Ambient* row (the backgrounds below, and Shuffle) and
   an *Apps* row (YouTube, Inputs, TV, Settings, Play Store, then the rest by name). Inputs is a
   menu of HDMI ports labelled with their HDMI-CEC device names, plus Live TV. Back closes it.
@@ -152,11 +152,9 @@ disabling it did not drop Wi-Fi.
 
 Cost: the stock launcher also answered three remote buttons.
 
-- **Settings button**: did nothing after the takeover. It sends
-  `TOGGLE_NOTIFICATION_HANDLER_PANEL`, which SystemUI only resolves to system apps, so the
-  launcher cannot answer it. Use the gear chip. (The button sends `KEYCODE_NOTIFICATION`; an
-  accessibility service can catch it, but filtering keys breaks key repeat everywhere, so held
-  volume and D-pad stop working. Not worth it.)
+- **Settings button**: it sends `KEYCODE_NOTIFICATION` (scan code 240), which reaches the
+  focused window, so Home answers it by opening Settings. Inside another app it goes to that app
+  and does nothing. (No accessibility service: filtering keys would break key repeat everywhere.)
 - **Guide** (app picker) and the featured-app button: also gone.
 - **Input button**: unaffected (TCL's own input bar).
 
